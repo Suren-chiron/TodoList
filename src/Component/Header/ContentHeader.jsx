@@ -3,7 +3,7 @@ import './stylecontent.css';
 import Context from "../../contexapi/Context";
 
 
-const contentHeader = () => {
+const ContentHeader = () => {
 
     const context = useContext(Context)
 
@@ -16,4 +16,4 @@ const contentHeader = () => {
     )
 }
 
-export default contentHeader;
+export default ContentHeader;
