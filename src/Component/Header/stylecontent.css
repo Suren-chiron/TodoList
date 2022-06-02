@@ -1,0 +1,19 @@
+.flexdivheader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.divheaderpage {
+    text-align: center;
+    background-color: #db366b;
+    padding: 31px;
+    width: 499px;
+    border-bottom-right-radius: 338px;
+    border-bottom-left-radius: 338px;
+}
+.headerpage {
+    font-family: fantasy !important;
+    font-size: 55px;
+    color: white;
+}
