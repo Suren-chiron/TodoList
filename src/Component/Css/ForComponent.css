@@ -11,32 +11,38 @@
 .divnametodof{
     color: #2fff00;
     background: white;
+    border-radius: 10px;
 }
 .nametodof{
     text-align: right;
 }
 .descriptiontodo{
     text-align: right;
-    color: #464646;
     line-height: 30px;
 }
-.unicode{
+.deleticondark{
     cursor: pointer;
-    color: red;
+    color: #980000;
     margin-right: 8px;
 }
-.unicode:hover{
-    border: 1px solid red;
-    border-radius: 13px;
+.deleticondark:hover{
+    color: #ff0000;
     transition: .5s ease;
 }
-.unicode1{
+.deleticonlight{
     cursor: pointer;
-    color: #5f5fce;
+    color: #ff0000;
+    margin-right: 8px;
 }
-.unicode1:hover{
-    border: 1px solid #5f5fce;
-    border-radius: 13px;
-    transition: .8s ease;
-    color: lightgreen;
+.editdark{
+    cursor: pointer;
+    color: #007281;
+}
+.editdark:hover{
+    transition: .4s ease;
+    color: #00e8ff;
+}
+.editlight {
+    cursor: pointer;
+    color: #4a02ff;
 }

@@ -3,7 +3,7 @@ import ShowListWork from "./ShowListWork";
 import Context from "../../contexapi/Context";
 
 
-const MapInListWork = ({classeditblock,classhidecontent}) => {
+const MapInListWork = ({classeditblock,classhidecontent,classchangecolordec,classediticon,classdeleticon}) => {
 
     const context = useContext(Context)
 
@@ -22,6 +22,9 @@ const MapInListWork = ({classeditblock,classhidecontent}) => {
                  iddd = {() => context.Hidelistitemsexceptonea(o.id)}
                  confirm = {() => context.buttonconfirmforedit()}
                  classhidecontent = {classhidecontent}
+                 classchangecolordec = {classchangecolordec}
+                 classediticon = {classediticon}
+                 classdeleticon = {classdeleticon}
              >
              </ShowListWork>
           ))}

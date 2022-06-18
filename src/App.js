@@ -1,9 +1,10 @@
-import React, {useState,useContext} from "react";
+import React, {useState} from "react";
 import {ToastContainer,toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+import HigherOrderComponent from "./Component/HOC/HigherOrderComponent";
 import ContentHeader from "./Component/Header/ContentHeader";
-import MapForSearch from "./Component/Search/MapForSearch";
+// import MapForSearch from "./Component/Search/MapForSearch";
 import AddTodoInList from "./Component/AddTodo/AddTodoInList";
 import AddAndShowDoneTask from "./Component/Features/AddAndShowDoneTask";
 import MapInDoneTasks from "./Component/ListDoneTasks/MapInDoneTasks";
@@ -12,12 +13,12 @@ import Context from "./contexapi/Context";
 
 import './App.css';
 import './Component/Css/ForComponent.css';
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon, faSun } from '@fortawesome/fontawesome-free-solid'
 
 const App = () => {
-    // todo : this is a state
 
+    // todo : this is a state
     const [getvaluetodolist, changevaluetodolist] = useState([{
         id: 1,
         namework: "یادگیری زبان انگلیسی",
@@ -33,9 +34,8 @@ const App = () => {
     const [getvalueaddtodoshowhide, changevalueaddtodoshowhide] = useState(false)
     const [getvalueedittodoshowhide, changevalueedittodoshowhide] = useState(false)
     const [getvaluedonetaskshowhide, changevaluedonetaskshowhide] = useState(false)
-    // const [getvalueperson, changevalueperson] = useState("")
-    const [getvaluetitlepage, changevaluetitlepage] = useState("TODOLIST")
     const [getvalueforconfirmedit , changevalueforconfirmedit] = useState([])
+    const [gettruefalsedarktheme, changetruefalsedarktheme] = useState(false)
 
     // todo : methdos under is for show and hide or true and false state
     const addtodoshowhide = () => {
@@ -96,6 +96,7 @@ const App = () => {
         const filter1 = todobefore.filter(p => p.id === id)
         changevalueforconfirmedit(todobefore)
         changevaluetodolist(filter1)
+        changevalueedittodoshowhide(!getvalueedittodoshowhide)
     }
     const confirm = () => {
         toast.success(`با موفقیت ویرایش شد`,{position:"top-right"})
@@ -170,11 +171,43 @@ const App = () => {
     //     }
     // }
 
+    // todo : change theme page to dark or light
+    const chamgetheme = () => {
+        changetruefalsedarktheme(!gettruefalsedarktheme)
+    }
+
+    // todo : finished functions
+
     let showcomponentadd,editpush,listdonetasks,edithidecontent;
     // -------------------
     if(getvalueaddtodoshowhide === true) {
         showcomponentadd = <AddTodoInList />
     }
+
+    let changebgbutton = ""
+    let darkorlight = "";
+    let changecolordescription = ""
+    let editicon = ""
+    let deleticon = ""
+    let changeopacitydonetasks = ""
+    if(gettruefalsedarktheme === true) {
+        darkorlight = <FontAwesomeIcon icon="sun" color="#c77f00" className="p-2 mt-1"/>
+        changecolordescription = "text-white"
+        editicon = "editdark"
+        deleticon = "deleticondark"
+        changeopacitydonetasks = 'opacity-75'
+        changebgbutton = "bg-light"
+        document.querySelector("body").style.background = "#212529"
+    } else {
+        darkorlight = <FontAwesomeIcon icon="moon" color="#c77f00" className="p-2 mt-1"/>
+        changecolordescription = "text-dark"
+        editicon = "editlight"
+        deleticon = "deleticonlight"
+        changeopacitydonetasks = 'opacity-100'
+        changebgbutton = "bg-dark"
+        document.querySelector("body").style.background = "white"
+    }
+
     editpush = "";
     edithidecontent = "";
     if(getvalueedittodoshowhide === true) {
@@ -185,15 +218,13 @@ const App = () => {
         edithidecontent = ("d-flex d-column")
     }
     if (getvaluedonetaskshowhide === true) {
-        listdonetasks = <MapInDoneTasks />
+        listdonetasks = <MapInDoneTasks classchangeopacity = {changeopacitydonetasks}></MapInDoneTasks>
     }
-
 
     return(
         <Context.Provider value={{
             TODOLISTcontext : getvaluetodolist,
             Donetaskss : getvalueDonetaskss,
-            titlepage : getvaluetitlepage,
             showehideaddtodo : addtodoshowhide,
             showehideedittodo : edittodoshowhide,
             showehidedonetasktodo : donetaskshowhide,
@@ -207,33 +238,33 @@ const App = () => {
             editdescription : edit1,
             partdonetask : partsdonetask,
             deletitemfordonetask : deletDoneTask,
-            classeditblock : editpush,
-            classhidecontent : edithidecontent
         }}>
-            <div className="container">
-                <div className="row">
-                    <ContentHeader />
-                    <ToastContainer />
-                    <div className="d-flex flex-column justify-content-center align-items-center">
-                        {/*todo : is this a box search*/}
-                        {/*    <MapForSearch*/}
-                        {/*        valueevent = {this.valueevent}*/}
-                        {/*        methodsearch = {this.methodsearch}*/}
-                        {/*    >*/}
-                        {/*    </MapForSearch>*/}
-                        <AddAndShowDoneTask />
-                    </div>
-                    {showcomponentadd}
-                    {listdonetasks}
-                    <MapInListWork
-                        classeditblock = {editpush}
-                        classhidecontent = {edithidecontent}
-                    >
-                    </MapInListWork>
-                </div>
+            <ContentHeader />
+            <button onClick={chamgetheme} style={{position:"fixed",bottom: "0",right: "0"}} className={`${changebgbutton} m-5 border-0 p-2 rounded-circle shadow-lg `}>
+                {darkorlight}
+            </button>
+            <ToastContainer />
+            <div className="d-flex flex-column justify-content-center align-items-center">
+            {/*todo : is this a box search*/}
+            {/*    <MapForSearch*/}
+            {/*        valueevent = {this.valueevent}*/}
+            {/*        methodsearch = {this.methodsearch}*/}
+            {/*    >*/}
+            {/*    </MapForSearch>*/}
+            <AddAndShowDoneTask />
             </div>
+            {showcomponentadd}
+            {listdonetasks}
+            <MapInListWork
+                classeditblock = {editpush}
+                classhidecontent = {edithidecontent}
+                classchangecolordec = {changecolordescription}
+                classediticon = {editicon}
+                classdeleticon = {deleticon}
+            >
+            </MapInListWork>
         </Context.Provider>
     )
 }
 
-export default App;
+export default HigherOrderComponent(App);

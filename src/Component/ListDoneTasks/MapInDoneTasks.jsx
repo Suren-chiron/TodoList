@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import DoneTasks from "./DoneTasks";
 import Context from "../../contexapi/Context";
 
-const MapInDoneTasks = () => {
+const MapInDoneTasks = ({classchangeopacity}) => {
 
     const context = useContext(Context)
 
@@ -13,6 +13,7 @@ const MapInDoneTasks = () => {
                    name = {p.namework}
                    description={p.descriptionwork}
                    delet1={() => context.deletitemfordonetask(p.id)}
+                   classchangeopacity = {classchangeopacity}
                >
                </DoneTasks>
            ))}
