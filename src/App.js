@@ -18,7 +18,7 @@ import { faMoon, faSun } from '@fortawesome/fontawesome-free-solid'
 
 const App = () => {
 
-    // todo : this is a state
+    // todo : this is a statee
     const [getvaluetodolist, changevaluetodolist] = useState([{
         id: 1,
         namework: "یادگیری زبان انگلیسی",

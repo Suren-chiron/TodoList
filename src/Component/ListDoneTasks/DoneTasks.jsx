@@ -22,5 +22,4 @@ const DoneTasks = ({name, description, delet1, classchangeopacity}) => {
   )
 }
 
-
 export default DoneTasks

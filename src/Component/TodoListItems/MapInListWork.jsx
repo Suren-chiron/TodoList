@@ -32,4 +32,5 @@ const MapInListWork = ({classeditblock,classhidecontent,classchangecolordec,clas
     )
 }
 
+
 export default MapInListWork;
