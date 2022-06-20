@@ -2,21 +2,18 @@ import React, {useState} from "react";
 import {ToastContainer,toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import HigherOrderComponent from "./Component/HOC/HigherOrderComponent";
-import ContentHeader from "./Component/Header/ContentHeader";
 // import MapForSearch from "./Component/Search/MapForSearch";
-import AddTodoInList from "./Component/AddTodo/AddTodoInList";
-import AddAndShowDoneTask from "./Component/Features/AddAndShowDoneTask";
-import MapInDoneTasks from "./Component/ListDoneTasks/MapInDoneTasks";
-import MapInListWork from "./Component/TodoListItems/MapInListWork";
-import Context from "./contexapi/Context";
+import AddTodoInList from "../component/AddTodo/AddTodoInList";
+import MapInDoneTasks from "../component/ListDoneTasks/MapInDoneTasks";
+import Context from "../contexapi/Context";
 
-import './App.css';
-import './Component/Css/ForComponent.css';
+import '../App.css';
+import '../component/Css/ForComponent.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/fontawesome-free-solid'
 
-const App = () => {
+
+const Globalstate = ({ children }) => {
 
     // todo : this is a statee
     const [getvaluetodolist, changevaluetodolist] = useState([{
@@ -172,7 +169,7 @@ const App = () => {
     // }
 
     // todo : change theme page to dark or light
-    const chamgetheme = () => {
+    const changetheme = () => {
         changetruefalsedarktheme(!gettruefalsedarktheme)
     }
 
@@ -195,7 +192,7 @@ const App = () => {
         changecolordescription = "text-white"
         editicon = "editdark"
         deleticon = "deleticondark"
-        changeopacitydonetasks = 'opacity-75'
+        changeopacitydonetasks = 'donetask-dark'
         changebgbutton = "bg-light"
         document.querySelector("body").style.background = "#212529"
     } else {
@@ -203,7 +200,7 @@ const App = () => {
         changecolordescription = "text-dark"
         editicon = "editlight"
         deleticon = "deleticonlight"
-        changeopacitydonetasks = 'opacity-100'
+        changeopacitydonetasks = ''
         changebgbutton = "bg-dark"
         document.querySelector("body").style.background = "white"
     }
@@ -218,13 +215,20 @@ const App = () => {
         edithidecontent = ("d-flex d-column")
     }
     if (getvaluedonetaskshowhide === true) {
-        listdonetasks = <MapInDoneTasks classchangeopacity = {changeopacitydonetasks}></MapInDoneTasks>
+        listdonetasks =
+            <MapInDoneTasks />
     }
+
+    const classes = [{
+        editpush : editpush,edithidecontent : edithidecontent, changebgbutton : changebgbutton, darkorlight : darkorlight, changecolordescription : changecolordescription, editicon : editicon, deleticon : deleticon , changeopacitydonetasks : changeopacitydonetasks
+    }]
+
 
     return(
         <Context.Provider value={{
             TODOLISTcontext : getvaluetodolist,
             Donetaskss : getvalueDonetaskss,
+            testforapp : getvalueaddtodoshowhide,
             showehideaddtodo : addtodoshowhide,
             showehideedittodo : edittodoshowhide,
             showehidedonetasktodo : donetaskshowhide,
@@ -238,33 +242,14 @@ const App = () => {
             editdescription : edit1,
             partdonetask : partsdonetask,
             deletitemfordonetask : deletDoneTask,
+            showhideaddtodolist : showcomponentadd,
+            showhidedontask : listdonetasks,
+            fordarkthemetruefalse : changetheme,
+            classess : classes
         }}>
-            <ContentHeader />
-            <button onClick={chamgetheme} style={{position:"fixed",bottom: "0",right: "0"}} className={`${changebgbutton} m-5 border-0 p-2 rounded-circle shadow-lg `}>
-                {darkorlight}
-            </button>
-            <ToastContainer />
-            <div className="d-flex flex-column justify-content-center align-items-center">
-            {/*todo : is this a box search*/}
-            {/*    <MapForSearch*/}
-            {/*        valueevent = {this.valueevent}*/}
-            {/*        methodsearch = {this.methodsearch}*/}
-            {/*    >*/}
-            {/*    </MapForSearch>*/}
-            <AddAndShowDoneTask />
-            </div>
-            {showcomponentadd}
-            {listdonetasks}
-            <MapInListWork
-                classeditblock = {editpush}
-                classhidecontent = {edithidecontent}
-                classchangecolordec = {changecolordescription}
-                classediticon = {editicon}
-                classdeleticon = {deleticon}
-            >
-            </MapInListWork>
+            {children}
         </Context.Provider>
     )
 }
 
-export default HigherOrderComponent(App);
+export default Globalstate;

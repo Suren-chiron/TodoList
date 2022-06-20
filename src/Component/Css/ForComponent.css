@@ -46,3 +46,10 @@
     cursor: pointer;
     color: #4a02ff;
 }
+.donetask-dark {
+    opacity: .8;
+}
+.donetask-dark:hover {
+    transition: 1.2s;
+    opacity: 1;
+}

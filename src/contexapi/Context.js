@@ -16,6 +16,8 @@ const Context = createContext({
     editdescription : (event,id) => {},
     partdonetask : id => {},
     deletitemfordonetask : id => {},
+    fordarkthemetruefalse : () => {},
+    classess : []
 })
 
 

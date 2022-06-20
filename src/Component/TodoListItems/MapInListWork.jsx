@@ -3,7 +3,7 @@ import ShowListWork from "./ShowListWork";
 import Context from "../../contexapi/Context";
 
 
-const MapInListWork = ({classeditblock,classhidecontent,classchangecolordec,classediticon,classdeleticon}) => {
+const MapInListWork = ({classeditblock,classhidecontent,classediticon,classdeleticon}) => {
 
     const context = useContext(Context)
 
@@ -18,13 +18,13 @@ const MapInListWork = ({classeditblock,classhidecontent,classchangecolordec,clas
                  edit1 = {(event) => context.editdescription(event,o.id)}
                  donetasks = {() => context.partdonetask(o.id)}
                  showedit = {() => context.showehideedittodo()}
-                 classblock = {classeditblock}
                  iddd = {() => context.Hidelistitemsexceptonea(o.id)}
                  confirm = {() => context.buttonconfirmforedit()}
-                 classhidecontent = {classhidecontent}
-                 classchangecolordec = {classchangecolordec}
-                 classediticon = {classediticon}
-                 classdeleticon = {classdeleticon}
+                 classblock = {context.classess.map(p => p.editpush)}
+                 classhidecontent = {context.classess.map(p => p.edithidecontent)}
+                 classchangecolordec = {context.classess.map(p => p.changecolordescription)}
+                 classediticon = {context.classess.map(p => p.editicon)}
+                 classdeleticon = {context.classess.map(p => p.deleticon)}
              >
              </ShowListWork>
           ))}
