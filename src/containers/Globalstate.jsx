@@ -6,12 +6,10 @@ import 'react-toastify/dist/ReactToastify.css'
 import AddTodoInList from "../component/AddTodo/AddTodoInList";
 import MapInDoneTasks from "../component/ListDoneTasks/MapInDoneTasks";
 import Context from "../contexapi/Context";
-
 import '../App.css';
 import '../component/Css/ForComponent.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/fontawesome-free-solid'
-
 
 const Globalstate = ({ children }) => {
 
@@ -41,10 +39,6 @@ const Globalstate = ({ children }) => {
     const edittodoshowhide = () => {
         changevalueedittodoshowhide(!getvalueedittodoshowhide)
     }
-    const donetaskshowhide = () => {
-        changevaluedonetaskshowhide(!getvaluedonetaskshowhide)
-    }
-
 
     // todo : 3 method under is for add todo in list
     const setnewnametodo = event => {
@@ -228,10 +222,10 @@ const Globalstate = ({ children }) => {
         <Context.Provider value={{
             TODOLISTcontext : getvaluetodolist,
             Donetaskss : getvalueDonetaskss,
+            classess : classes,
             testforapp : getvalueaddtodoshowhide,
             showehideaddtodo : addtodoshowhide,
             showehideedittodo : edittodoshowhide,
-            showehidedonetasktodo : donetaskshowhide,
             newnameset : setnewnametodo,
             newdescriptionset : setnewdescriptiontodo,
             confirmaddtodoinlist : addtodolist ,
@@ -244,8 +238,7 @@ const Globalstate = ({ children }) => {
             deletitemfordonetask : deletDoneTask,
             showhideaddtodolist : showcomponentadd,
             showhidedontask : listdonetasks,
-            fordarkthemetruefalse : changetheme,
-            classess : classes
+            fordarkthemetruefalse : changetheme
         }}>
             {children}
         </Context.Provider>

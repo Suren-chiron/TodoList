@@ -3,9 +3,9 @@ import {createContext} from "react";
 const Context = createContext({
     TODOLISTcontext : [],
     Donetaskss : [],
+    classess : [],
     showehideaddtodo: () => {},
     showehideedittodo: () => {},
-    showehidedonetasktodo: () => {},
     newnameset : event => {},
     newdescriptionset : event => {},
     confirmaddtodoinlist : () => {},
@@ -16,8 +16,7 @@ const Context = createContext({
     editdescription : (event,id) => {},
     partdonetask : id => {},
     deletitemfordonetask : id => {},
-    fordarkthemetruefalse : () => {},
-    classess : []
+    fordarkthemetruefalse : () => {}
 })
 
 

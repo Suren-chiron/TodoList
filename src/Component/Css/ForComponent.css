@@ -8,6 +8,9 @@
     background-color: #505050;
     border-radius: 13px;
 }
+.btnadvanced:hover{
+    color: white;
+}
 .divnametodof{
     color: #2fff00;
     background: white;
