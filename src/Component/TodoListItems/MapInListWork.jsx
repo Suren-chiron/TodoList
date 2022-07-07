@@ -22,6 +22,7 @@ const MapInListWork = ({classeditblock,classhidecontent,classediticon,classdelet
                  confirm = {() => context.buttonconfirmforedit()}
                  classblock = {context.classess.map(p => p.editpush)}
                  classhidecontent = {context.classess.map(p => p.edithidecontent)}
+                 disaplededit = {context.classess.map(p => p.disableiconedit)}
                  classchangecolordec = {context.classess.map(p => p.changecolordescription)}
                  classediticon = {context.classess.map(p => p.editicon)}
                  classdeleticon = {context.classess.map(p => p.deleticon)}

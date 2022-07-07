@@ -56,3 +56,6 @@
     transition: 1.2s;
     opacity: 1;
 }
+.nonebackgroundbutton{
+    background: none !important;
+}

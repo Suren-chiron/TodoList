@@ -4,7 +4,7 @@ import './stylecontent.css';
 const ContentHeader = () => {
 
     return(
-        <div className="flexdivheader">
+        <div className="flexdivheader col-12">
             <div className="divheaderpage">
                 <h1 className="headerpage">TODOLIST</h1>
             </div>
